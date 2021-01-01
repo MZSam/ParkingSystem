@@ -2,16 +2,17 @@ package com.parkit.parkingsystem.util;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.util.Scanner;
 
 public class InputReaderUtil {
 
-    private static Scanner scan = new Scanner(System.in);
+    private static Scanner scan;  
     private static final Logger logger = LogManager.getLogger("InputReaderUtil");
 
     public int readSelection() {
         try {
+        	
+        	scan = new Scanner(System.in); 
             int input = Integer.parseInt(scan.nextLine());
             return input;
         }catch(Exception e){
@@ -23,6 +24,7 @@ public class InputReaderUtil {
 
     public String readVehicleRegistrationNumber() throws Exception {
         try {
+        	scan = new Scanner(System.in);
             String vehicleRegNumber= scan.nextLine();
             if(vehicleRegNumber == null || vehicleRegNumber.trim().length()==0) {
                 throw new IllegalArgumentException("Invalid input provided");
